@@ -57,11 +57,6 @@ def accounts():
     accounts = mdb.get_accounts();
     return jsonify(accounts)
 
-@app.route('/keys')
-def keys():
-    keys = mdb.get_keys()
-    return jsonify(keys)
-
 @app.route('/refresh')
 def refresh():
     if len(refreshes) > 0:
