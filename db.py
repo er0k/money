@@ -50,12 +50,11 @@ class money_db:
     def disconnect(self):
         if not self.db:
             raise Exception('The database is already disconnected')
-        print('writing temp data to database')
         self.encrypt()
+        self.db.close()
 
     def encrypt(self):
         print('encrypting db...')
-        self.db.close()
         self.tmp_db.seek(0)
         with open(self.tmp_db.name, mode='rb', buffering=self.buff) as fIn:
             with open(self.enc_db, mode='wb', buffering=self.buff) as fOut:
