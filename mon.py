@@ -37,6 +37,7 @@ def refresh_thread():
             bals = util.prep_balances(a)
             for b in bals:
                 mdb.add_balance(b)
+    mdb.encrypt()
 
 def handler(signal, frame):
     print('closing down')
