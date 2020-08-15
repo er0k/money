@@ -31,12 +31,16 @@ class plaid_client:
         try:
             bal = self.c.Accounts.balance.get(key[1])
         except plaid.errors.InstitutionError as e:
-            print("OH NO!!!!!!")
+            bal = None
+            print("OH NO!!!!!! Couldn't get a balance for some reason")
             print(e)
             pass
         except plaid.errors.PlaidError as e:
             raise Exception(e)
-        err = bal['item']['error']
+        err = None
+        if bal:
+            if bal['item']:
+                err = bal['item']['error']
         if err is not None:
             raise Exception(err)
         return bal

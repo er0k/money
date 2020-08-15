@@ -31,6 +31,8 @@ def refresh_thread():
     keys = mdb.get_keys()
     for key in keys:
         bal = pc.get_balance(key)
+        if bal is None:
+            continue
         for a in bal['accounts']:
             account = util.prep_account(a, key[0])
             mdb.add_account(account)
