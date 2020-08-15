@@ -118,6 +118,12 @@ UPDATE cur SET account_id = '<new_id>'WHERE account_id = '<old_id>';
 UPDATE lim SET account_id = '<new_id>' WHERE account_id = '<old_id>';
 ```
 
+Then you probably want to delete the old unused account key:
+
+```sql
+DELETE FROM accounts WHERE id = '<old_id>';
+```
+
 ## Todo
 
 * make this easier to update :)
